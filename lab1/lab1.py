@@ -1,10 +1,6 @@
-from sys import argv as arguments
+from sys import argv as py_arguments
 from os.path import exists as path_exists
 import colorama as clrm
-
-
-def g_coef(num):
-    return f"({num})" if num == 1 else ""
 
 
 def get_float(message):
@@ -15,25 +11,26 @@ def get_float(message):
     except:
         print(
             f"{clrm.Style.RESET_ALL}{clrm.Fore.RED}",
-            f"Invalid floating point number. Try again{clrm.Style.RESET_ALL}",
+            f"Invalid floating point number. Try again.{clrm.Style.RESET_ALL}",
         )
         return get_float(message)
+
+
+def g_coef(num):
+    return f"({num})" if num == 1 else ""
 
 
 def print_quadratic(a, b, c):
     if a != 0:
         print(f"\nYour quadratic is {g_coef(a)}x**2 + {g_coef(b)}x + ({c}) == 0")
     else:
-        print("\nThis is not quadratic")
-        if b != 0:
-            print("...this is linear")
-        else:
-            print("...and isn`t even linear")
+        print("\nThis isn`t quadratic", end="")
+        print(", this is linear" if b != 0 else ", and isn`t even linear")
 
 
 def solve_quadratic(a, b, c):
     if a == 0:
-        return
+        return None
     else:
         from math import sqrt
 
@@ -67,11 +64,11 @@ if __name__ == "__main__":
     print("\nThis program solves quadratic equations (ax**2 + bx + c)")
 
     try:
-        path_to_vars = str(arguments[1])
-        if path_exists(path_to_vars):
+        path_to_coefs = str(py_arguments[1])
+        if path_exists(path_to_coefs):
             from re import match
 
-            in_txt = open(path_to_vars, "r+").read()
+            in_txt = open(path_to_coefs, "r+").read()
             if match("-?\d(\.\d*)? -?\d(\.\d*)? -?\d(\.\d*)?\n", in_txt):
                 value_list = in_txt[:-1].split(" ")
                 a = float(value_list[0])
@@ -80,8 +77,8 @@ if __name__ == "__main__":
             else:
                 print("Invalid input file format\n")
         else:
-            print("Invalid path")
-    except:
+            print("Invalid path, entering interactive mode")
+    except IndexError:  # there is no path argument
         a = get_float("Enter a\t")
         b = get_float("Enter b\t")
         c = get_float("Enter c\t")
