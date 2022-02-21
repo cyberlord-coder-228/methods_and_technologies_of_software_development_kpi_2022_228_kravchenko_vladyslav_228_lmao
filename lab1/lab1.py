@@ -4,12 +4,7 @@ import colorama as clrm
 
 
 def g_coef(num):
-    if num == 1:
-        return ""
-    elif num < 0:
-        return f"({num})"
-    else:
-        return str(num)
+    return f"({num})" if num == 1 else ""
 
 
 def get_float(message):
