@@ -1,5 +1,6 @@
 from sys import argv as arguments
 from os.path import exists as path_exists
+import colorama as clrm
 
 
 def g_coef(num):
@@ -13,8 +14,14 @@ def g_coef(num):
 
 def get_float(message):
     try:
-        return float(input(message))
+        result = float(input(f"{message}{clrm.Style.BRIGHT}{clrm.Fore.GREEN}"))
+        print(clrm.Style.RESET_ALL, end="")
+        return result
     except:
+        print(
+            f"{clrm.Style.RESET_ALL}{clrm.Fore.RED}",
+            f"Invalid floating point number. Try again{clrm.Style.RESET_ALL}",
+        )
         return get_float(message)
 
 
