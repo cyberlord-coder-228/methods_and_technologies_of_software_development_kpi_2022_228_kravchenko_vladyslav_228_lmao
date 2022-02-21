@@ -63,7 +63,7 @@ if __name__ == "__main__":
             from re import match
 
             in_txt = open(path_to_vars, "r+").read()
-            if match("-?\d(\.\d*)?\s-?\d(\.\d*)?\s-?\d(\.\d*)?\n", in_txt):
+            if match("-?\d(\.\d*)? -?\d(\.\d*)? -?\d(\.\d*)?\n", in_txt):
                 value_list = in_txt[:-1].split(" ")
                 a = float(value_list[0])
                 b = float(value_list[1])
