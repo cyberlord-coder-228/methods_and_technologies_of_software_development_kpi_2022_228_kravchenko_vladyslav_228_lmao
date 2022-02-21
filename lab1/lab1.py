@@ -11,6 +11,13 @@ def g_coef(num):
         return str(num)
 
 
+def get_float(message):
+    try:
+        return float(input(message))
+    except:
+        return get_float(message)
+
+
 def print_quadratic(a, b, c):
     if a != 0:
         print(f"\nYour quadratic is {g_coef(a)}x**2 + {g_coef(b)}x + ({c}) == 0")
@@ -73,9 +80,9 @@ if __name__ == "__main__":
         else:
             print("Invalid path")
     except:
-        a = float(input("Enter a\t"))
-        b = float(input("Enter b\t"))
-        c = float(input("Enter c\t"))
+        a = get_float("Enter a\t")
+        b = get_float("Enter b\t")
+        c = get_float("Enter c\t")
 
     print_quadratic(a, b, c)
     print_quadratic_solution(solve_quadratic(a, b, c))
