@@ -1,6 +1,19 @@
+from sys import argv as arguments
+from os.path import exists as path_exists
+
+
+def g_coef(num):
+    if num == 1:
+        return ""
+    elif num < 0:
+        return f"({num})"
+    else:
+        return str(num)
+
+
 def print_quadratic(a, b, c):
     if a != 0:
-        print(f"\nYour quadratic is {a}x**2 + ({b}x) + ({c}) == 0")
+        print(f"\nYour quadratic is {g_coef(a)}x**2 + {g_coef(b)}x + ({c}) == 0")
     else:
         print("\nThis is not quadratic")
         if b != 0:
@@ -42,11 +55,27 @@ def print_quadratic_solution(solution_set):
 
 
 if __name__ == "__main__":
-    print("\nThis program solves quadratic equations\n(ax**2 + bx + c)\n")
+    print("\nThis program solves quadratic equations (ax**2 + bx + c)")
 
-    a = int(input("Enter a\t"))
-    b = int(input("Enter b\t"))
-    c = int(input("Enter c\t"))
+    try:
+        path_to_vars = str(arguments[1])
+        if path_exists(path_to_vars):
+            from re import match
+
+            in_txt = open(path_to_vars, "r+").read()
+            if match("-?\d(\.\d*)?\s-?\d(\.\d*)?\s-?\d(\.\d*)?\n", in_txt):
+                value_list = in_txt[:-1].split(" ")
+                a = float(value_list[0])
+                b = float(value_list[1])
+                c = float(value_list[2])
+            else:
+                print("Invalid input file format\n")
+        else:
+            print("Invalid path")
+    except:
+        a = float(input("Enter a\t"))
+        b = float(input("Enter b\t"))
+        c = float(input("Enter c\t"))
 
     print_quadratic(a, b, c)
     print_quadratic_solution(solve_quadratic(a, b, c))
