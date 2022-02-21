@@ -54,28 +54,28 @@ def print_quadratic_solution(solution_set):
             print(f"{root} is a solution")
 
 
+if __name__ == "__main__":
+    print("\nThis program solves quadratic equations (ax**2 + bx + c)")
 
-print("\nThis program solves quadratic equations (ax**2 + bx + c)")
+    try:
+        path_to_vars = str(arguments[1])
+        if path_exists(path_to_vars):
+            from re import match
 
-try:
-    path_to_vars = str(arguments[1])
-    if path_exists(path_to_vars):
-        from re import match
-
-        in_txt = open(path_to_vars, "r+").read()
-        if match("-?\d(\.\d*)?\s-?\d(\.\d*)?\s-?\d(\.\d*)?\n", in_txt):
-            value_list = in_txt[:-1].split(" ")
-            a = float(value_list[0])
-            b = float(value_list[1])
-            c = float(value_list[2])
+            in_txt = open(path_to_vars, "r+").read()
+            if match("-?\d(\.\d*)?\s-?\d(\.\d*)?\s-?\d(\.\d*)?\n", in_txt):
+                value_list = in_txt[:-1].split(" ")
+                a = float(value_list[0])
+                b = float(value_list[1])
+                c = float(value_list[2])
+            else:
+                print("Invalid input file format\n")
         else:
-            print("Invalid input file format\n")
-    else:
-        print("Invalid path\n")
-except:
-    a = float(input("Enter a\t"))
-    b = float(input("Enter b\t"))
-    c = float(input("Enter c\t"))
+            print("Invalid path")
+    except:
+        a = float(input("Enter a\t"))
+        b = float(input("Enter b\t"))
+        c = float(input("Enter c\t"))
 
-print_quadratic(a, b, c)
-print_quadratic_solution(solve_quadratic(a, b, c))
+    print_quadratic(a, b, c)
+    print_quadratic_solution(solve_quadratic(a, b, c))
