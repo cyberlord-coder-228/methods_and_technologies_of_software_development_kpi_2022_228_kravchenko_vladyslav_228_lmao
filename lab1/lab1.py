@@ -17,7 +17,7 @@ def get_float(message):
 
 
 def g_coef(num):
-    return f"({num})" if num == 1 else ""
+    return f"({num})" if num != 1 else ""
 
 
 def print_quadratic(a, b, c):
