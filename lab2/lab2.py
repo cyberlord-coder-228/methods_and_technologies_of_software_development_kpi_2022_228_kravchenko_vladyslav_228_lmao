@@ -12,7 +12,13 @@ class DoublyLinkedList:
             raise ValueError("Must be string of length 1")
         self.head = self.tail = ListElement(None, None, value)
 
-
+    def get_length(self):
+        length_result = 1
+        element = self.head
+        while element.next_el != None:
+            length_result += 1
+            element = element.next_el
+        return length_result
 
     def append_el(self, value):
         if type(value) != str:
@@ -77,7 +83,7 @@ class DoublyLinkedList:
 
         return self._delete_el_(element)
 
-    def delete_el_by_val(self, value):
+    def delete_el_by_valdfgbhnmjk,l.(self, value):
         if self.get_length() == 1:
             raise RuntimeError('You cannot delete the only element')
         element = self.head
