@@ -1,2 +1,1 @@
-link on broken commit
-https://github.com/cyberlord-coder-228/methods_and_technologies_of_software_development_kpi_2022_228_kravchenko_vladyslav_228_lmao/commit/3eb41a63a180ac1f30d45c32a523a208f16e737c 
+[Link on broken commit] (https://github.com/cyberlord-coder-228/methods_and_technologies_of_software_development_kpi_2022_228_kravchenko_vladyslav_228_lmao/commit/3eb41a63a180ac1f30d45c32a523a208f16e737c)
