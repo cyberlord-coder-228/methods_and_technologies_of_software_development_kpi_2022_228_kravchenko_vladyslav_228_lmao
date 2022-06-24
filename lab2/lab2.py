@@ -83,7 +83,7 @@ class DoublyLinkedList:
 
         return self._delete_el_(element)
 
-    def delete_el_by_valdfgbhnmjk,l.(self, value):
+    def delete_el_by_val(self, value):
         if self.get_length() == 1:
             raise RuntimeError('You cannot delete the only element')
         element = self.head
